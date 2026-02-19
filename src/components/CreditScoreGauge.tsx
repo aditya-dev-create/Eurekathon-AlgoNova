@@ -15,9 +15,9 @@ export default function CreditScoreGauge({ score, size = 220 }: Props) {
   const risk = getRiskCategory(score);
 
   const riskColors: Record<string, string> = {
-    Low: "text-score-excellent",
-    Medium: "text-score-fair",
-    High: "text-score-poor",
+    Low: "text-emerald-500",
+    Medium: "text-orange-500",
+    High: "text-red-500",
   };
 
   return (
@@ -27,7 +27,8 @@ export default function CreditScoreGauge({ score, size = 220 }: Props) {
         <path
           d={`M 12 ${size / 2 + 10} A ${radius} ${radius} 0 0 1 ${size - 12} ${size / 2 + 10}`}
           fill="none"
-          stroke="hsl(228, 12%, 16%)"
+          stroke="currentColor"
+          className="text-slate-200 dark:text-slate-800"
           strokeWidth="10"
           strokeLinecap="round"
         />

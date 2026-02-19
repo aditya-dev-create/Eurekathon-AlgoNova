@@ -1,12 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X, Shield, User, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 import { LanguageSelector } from "./LanguageSelector";
+import { Button } from "./ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { path: "/", label: "common.home" },
+  { path: "/onboarding", label: "Digital Identity" },
+  { path: "/behavioral-quiz", label: "Behavioral Quiz" },
   { path: "/dashboard", label: "tabs.overview" },
   { path: "/simulator", label: "tabs.simulator" },
   { path: "/fairness", label: "tabs.fairness" },
@@ -47,6 +51,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </nav>
 
             <div className="flex items-center gap-2 border-l border-border/50 pl-4">
+              <ThemeToggle />
               <LanguageSelector />
               <button
                 className="md:hidden p-2 text-muted-foreground hover:text-foreground"

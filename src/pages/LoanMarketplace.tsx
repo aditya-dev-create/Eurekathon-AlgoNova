@@ -131,7 +131,7 @@ export default function LoanMarketplace() {
         <Layout>
             <div className="container py-10">
                 <motion.div {...fade(0)} className="mb-8">
-                    <Link to="/simulator" className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1 mb-2">
+                    <Link to="/simulator" className="text-sm text-muted-foreground hover:text-orange-500 flex items-center gap-1 mb-2">
                         ← {t("common.back")}
                     </Link>
                     <h1 className="font-display text-4xl font-bold">{t("marketplace.title")}</h1>
@@ -162,11 +162,11 @@ export default function LoanMarketplace() {
                         </CardContent>
                     </Card>
 
-                    <Card className="md:col-span-3 bg-gradient-to-br from-primary/5 to-transparent border-primary/10">
+                    <Card className="md:col-span-3 bg-gradient-to-br from-orange-500/5 to-transparent border-orange-500/10">
                         <CardContent className="p-8 flex flex-col md:flex-row items-center justify-around h-full gap-6">
                             <div className="text-center md:text-left">
                                 <div className="text-sm text-muted-foreground uppercase tracking-widest font-bold mb-1">{t("marketplace.eligibleAmount")}</div>
-                                <div className="text-4xl font-display font-bold text-primary">
+                                <div className="text-4xl font-display font-bold text-orange-500">
                                     ₹{(eligibleAmount).toLocaleString()}
                                 </div>
                                 <div className="text-xs text-muted-foreground mt-1">
@@ -217,7 +217,7 @@ export default function LoanMarketplace() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {offers.map((offer, i) => (
                         <motion.div key={offer.id} {...fade(2 + i)}>
-                            <Card className="h-full hover:border-primary/50 transition-all duration-300 group overflow-hidden">
+                            <Card className="h-full hover:border-orange-500/50 transition-all duration-300 group overflow-hidden">
                                 <CardHeader className="flex flex-row items-start justify-between pb-2">
                                     <div className="flex items-center gap-3">
                                         <div className={`h-10 w-10 rounded-lg ${offer.logo} flex items-center justify-center text-white font-bold text-xs`}>
@@ -235,7 +235,7 @@ export default function LoanMarketplace() {
                                 </CardHeader>
                                 <CardContent className="space-y-4">
                                     <div className="p-3 bg-secondary/30 rounded-lg text-xs text-muted-foreground flex gap-2">
-                                        <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                                        <CheckCircle className="h-4 w-4 text-orange-500 shrink-0" />
                                         {offer.reason}
                                     </div>
 
@@ -259,7 +259,7 @@ export default function LoanMarketplace() {
                                     </div>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button className="w-full gap-2 font-bold" onClick={() => window.open("#", "_blank")}>
+                                    <Button className="w-full gap-2 font-bold bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20" onClick={() => window.open("#", "_blank")}>
                                         {t("marketplace.apply")} <ArrowRight className="h-4 w-4" />
                                     </Button>
                                 </CardFooter>

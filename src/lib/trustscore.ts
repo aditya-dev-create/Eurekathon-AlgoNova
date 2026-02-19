@@ -252,6 +252,7 @@ export interface UserInputs {
   upi_surge?: boolean;
   income_spike?: boolean;
   location?: "rural" | "urban";
+  behavioral_score_override?: number; // Added to connect quiz
 }
 
 export interface PredictionResult {
@@ -270,8 +271,14 @@ export function predict(inputs: UserInputs): PredictionResult {
   const utility_streak_norm = inputs.utility_streak / 24;
   const utility_delay_norm = 0.3 * income_volatility;
   const rent_payment_timeliness = inputs.income_stability * 0.8;
-  const financial_discipline_score = inputs.psychometric_score;
-  const honesty_score = Math.min(1, inputs.psychometric_score * 0.9 + 0.1);
+
+  // Use behavioral score if provided, else fall back to basic psychometric_score input
+  const base_psych = inputs.behavioral_score_override
+    ? inputs.behavioral_score_override / 100
+    : inputs.psychometric_score;
+
+  const financial_discipline_score = base_psych;
+  const honesty_score = Math.min(1, base_psych * 0.9 + 0.1);
 
   const features = {
     income_volatility,
@@ -430,10 +437,10 @@ export function getRiskCategory(score: number): "Low" | "Medium" | "High" {
 }
 
 export function getScoreColor(score: number): string {
-  if (score >= 750) return "hsl(142, 76%, 36%)";
-  if (score >= 600) return "hsl(160, 84%, 39%)";
-  if (score >= 450) return "hsl(38, 92%, 50%)";
-  return "hsl(0, 72%, 51%)";
+  if (score >= 750) return "#10b981"; // Vibrant Emerald
+  if (score >= 600) return "#F97316"; // Primary Orange
+  if (score >= 450) return "#fbbf24"; // Warm Amber
+  return "#ef4444"; // Vivid Red
 }
 
 export function getFeatureImportance(): { feature: string; importance: number }[] {

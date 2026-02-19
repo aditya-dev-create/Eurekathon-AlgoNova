@@ -46,9 +46,9 @@ export default function Index() {
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,102,255,0.08),transparent_50%)]" />
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full" />
-        <div className="absolute top-[20%] -right-[5%] w-[30%] h-[30%] bg-primary/10 blur-[100px] rounded-full" />
+        <div className="absolute inset-0 pointer-events-none mesh-gradient opacity-60" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px] animate-float" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] animate-float" style={{ animationDelay: '-3s' }} />
 
         <div className="container relative py-20 flex flex-col items-center text-center">
           <motion.div {...fade(0)} className="mb-8">
@@ -74,10 +74,10 @@ export default function Index() {
 
           <motion.div {...fade(3)} className="flex flex-wrap gap-4 justify-center">
             <Link
-              to="/simulator"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:brightness-110 transition shrink-shadow glow-primary"
+              to="/onboarding"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-orange-500 text-white font-bold text-sm hover:bg-orange-600 transition shadow-lg shadow-orange-500/20"
             >
-              {t("common.launchSimulator")} <Zap className="h-4 w-4" />
+              Get Started <Zap className="h-4 w-4" />
             </Link>
             <Link
               to="/dashboard"
@@ -113,8 +113,8 @@ export default function Index() {
                 </div>
                 <h3 className="font-display text-2xl font-bold mb-3">{f.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6">{f.desc}</p>
-                <div className="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
-                  {t("common.launchSimulator")} <ArrowRight className="h-4 w-4" />
+                <div className="text-orange-500 text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
+                  Create Profile <ArrowRight className="h-4 w-4" />
                 </div>
               </Link>
             </motion.div>

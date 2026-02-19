@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["DM Sans", "system-ui", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
         display: ["Space Grotesk", "system-ui", "sans-serif"],
       },
       colors: {
@@ -24,8 +25,18 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#F97316",
+          foreground: "#FFFFFF",
+        },
+        slate: {
+          50: "#F8FAFC",
+          950: "#020617",
+        },
+        emerald: {
+          500: "#10B981",
+        },
+        amber: {
+          500: "#F59E0B",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -68,10 +79,13 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      boxShadow: {
+        'bespoke': '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.04)',
+      },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "12px",
+        md: "10px",
+        sm: "8px",
       },
       keyframes: {
         "accordion-down": {
@@ -96,3 +110,4 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

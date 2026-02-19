@@ -3,93 +3,170 @@
 @tailwind utilities;
 
 @layer base {
+  /* Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
   :root {
-    --background: 228 16% 6%;
-    --foreground: 210 20% 95%;
+    /* Color tokens (Restrained Professional) - H, S%, L% where used by Tailwind config */
+    --primary: 24 95% 53%;
+    /* Premium Digital Orange */
+    --primary-foreground: 0 0% 100%;
 
-    --card: 228 14% 10%;
-    --card-foreground: 210 20% 95%;
+    --background: 210 35% 98%;
+    /* #F8FAFC */
+    --background-dark: 220 70% 3%;
+    /* #020617 */
+    --foreground: 220 12% 12%;
 
-    --popover: 228 14% 10%;
-    --popover-foreground: 210 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 12% 12%;
 
-    --primary: 160 84% 39%;
-    --primary-foreground: 228 16% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 12% 12%;
 
-    --secondary: 228 12% 15%;
-    --secondary-foreground: 210 20% 90%;
+    --success: 145 72% 37%;
+    /* emerald */
+    --warning: 42 96% 52%;
+    /* amber */
 
-    --muted: 228 12% 14%;
-    --muted-foreground: 215 15% 55%;
-
-    --accent: 160 50% 14%;
-    --accent-foreground: 160 84% 60%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 95%;
-
-    --border: 228 12% 16%;
-    --input: 228 12% 18%;
-    --ring: 160 84% 39%;
+    --border: 220 13% 91%;
+    --input: 220 13% 95%;
+    --ring: var(--primary);
 
     --radius: 0.75rem;
+    /* 12px */
 
-    --score-excellent: 142 76% 36%;
-    --score-good: 160 84% 39%;
-    --score-fair: 38 92% 50%;
-    --score-poor: 0 72% 51%;
+    /* subtle shadows and accents */
+    --shadow-subtle: 0 8px 24px rgba(2, 6, 23, 0.04);
+    /* 4% opacity */
+  }
 
-    --chart-1: 160 84% 39%;
-    --chart-2: 200 80% 50%;
-    --chart-3: 38 92% 50%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 0 72% 51%;
-
-    --sidebar-background: 228 16% 6%;
-    --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 160 84% 39%;
-    --sidebar-primary-foreground: 228 16% 6%;
-    --sidebar-accent: 228 12% 15%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 228 12% 16%;
-    --sidebar-ring: 160 84% 39%;
+  .dark {
+    --background: 220 70% 3%;
+    --foreground: 210 20% 98%;
+    --card: 220 60% 6%;
+    --card-foreground: 210 20% 98%;
+    --popover: 220 60% 5%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 24 95% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 40% 12%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 30% 12%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 220 30% 12%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 30% 15%;
+    --input: 220 30% 10%;
+    --ring: 245 66% 60%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-slate-200;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv05", "cv11", "ss01";
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-feature-settings: "cv02", "cv05", "cv11", "ss01";
+    letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
   .glass-card {
-    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-xl;
+    @apply bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.02);
+  }
+
+  /* Segmented control styles for animated pill */
+  .segmented {
+    position: relative;
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: color-mix(in srgb, var(--input) 90%, transparent);
+    border-radius: 10px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+  }
+
+  .segmented-btn {
+    position: relative;
+    z-index: 10;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.2;
+    background: transparent;
+    border: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .segmented-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, rgba(79, 70, 229, 0.1), transparent);
   }
 
   .glow-primary {
-    box-shadow: 0 0 40px -10px hsl(160 84% 39% / 0.3);
+    box-shadow: 0 0 40px -10px hsl(24 95% 53% / 0.25);
+  }
+
+  .input-refined {
+    @apply w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 focus:outline-none focus:ring-2 focus:ring-orange-500/10 focus:border-orange-500/50 transition-all text-sm;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  }
+
+  .input-refined::placeholder {
+    @apply text-slate-400 dark:text-slate-600;
+  }
+
+  .label-refined {
+    @apply text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5 block;
+  }
+
+  .card-in-card {
+    @apply bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/60 dark:border-slate-800/60 rounded-xl p-4 transition-all hover:bg-white dark:hover:bg-slate-900 hover:border-orange-100 dark:hover:border-orange-900/50 hover:shadow-bespoke;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .mesh-gradient {
+    background-image:
+      radial-gradient(at 0% 0%, hsla(24, 95%, 53%, 0.15) 0, transparent 50%),
+      radial-gradient(at 50% 0%, hsla(42, 96%, 52%, 0.1) 0, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(24, 95%, 53%, 0.15) 0, transparent 50%);
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent-foreground;
-  }
-
-  .score-gradient {
-    background: linear-gradient(135deg, hsl(0 72% 51%), hsl(38 92% 50%), hsl(142 76% 36%));
-  }
-
-  .font-regional {
-    font-size: 1.05em;
-    letter-spacing: 0.01em;
-    line-height: 1.6;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-orange-600 to-amber-600;
   }
 }

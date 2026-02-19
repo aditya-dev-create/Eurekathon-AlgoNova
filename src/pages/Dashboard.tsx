@@ -5,7 +5,7 @@ import {
 } from "recharts";
 import {
   Database, TrendingDown, Award, Activity, Scale, ShieldAlert,
-  Users, Globe, Code, ArrowUpRight, Zap, Target, Lock
+  Users, Globe, Code, ArrowUpRight, Zap, Target, Lock, Brain, ArrowRight
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import {
@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageContext";
 
-const scoreBarColors = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#10b981", "#059669"];
+const scoreBarColors = ["#EA580C", "#F97316", "#FB923C", "#FDBA74", "#FED7AA", "#FFEDD5"];
 
 export default function Dashboard() {
   const { t } = useLanguage();
@@ -43,8 +43,8 @@ export default function Dashboard() {
       <div className="container py-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
-            <motion.h1 {...fade(0)} className="font-display text-4xl font-bold mb-2">
-              TrustMetrics <span className="text-primary">Engine</span>
+            <motion.h1 {...fade(0)} className="font-display text-4xl font-bold mb-2 tracking-tighter">
+              TrustMetrics <span className="text-orange-500">Engine</span>
             </motion.h1>
             <motion.p {...fade(1)} className="text-muted-foreground">
               {t("hero.desc")}
@@ -54,7 +54,7 @@ export default function Dashboard() {
             <Badge variant="secondary" className="px-3 py-1">V1.2.0-ELITE</Badge>
             <Badge className="bg-green-500/10 text-green-500 hover:bg-green-500/20 px-3 py-1">LIVE DATA SIM</Badge>
             <Link to="/loan-marketplace">
-              <Button size="sm" className="gap-2">
+              <Button size="sm" className="gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/20">
                 {t("marketplace.cta")} <ArrowUpRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -76,10 +76,10 @@ export default function Dashboard() {
           <TabsContent value="overview" className="space-y-8 outline-none">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { icon: Database, label: t("dashboard.totalPopulation"), value: stats.count.toLocaleString(), color: "text-primary" },
+                { icon: Database, label: t("dashboard.totalPopulation"), value: stats.count.toLocaleString(), color: "text-orange-500" },
                 { icon: TrendingDown, label: t("dashboard.systemDefaultRate"), value: `${(stats.defaultRate * 100).toFixed(1)}%`, color: "text-red-500" },
-                { icon: Award, label: t("dashboard.meanCreditScore"), value: stats.avgScore.toString(), color: "text-green-500" },
-                { icon: Activity, label: t("inclusion.totalLift"), value: `+${(inclusion.lift * 100).toFixed(1)}%`, color: "text-primary" },
+                { icon: Award, label: t("dashboard.meanCreditScore"), value: stats.avgScore.toString(), color: "text-orange-500" },
+                { icon: Activity, label: t("inclusion.totalLift"), value: `+${(inclusion.lift * 100).toFixed(1)}%`, color: "text-orange-500" },
               ].map((s, i) => (
                 <Card key={s.label} className="border-border/50 bg-card/50 backdrop-blur-sm">
                   <CardHeader className="p-5 pb-2">
@@ -125,7 +125,7 @@ export default function Dashboard() {
                       <XAxis type="number" tick={{ fill: "hsl(215,15%,55%)", fontSize: 12 }} axisLine={false} />
                       <YAxis dataKey="feature" type="category" width={130} tick={{ fill: "hsl(215,15%,55%)", fontSize: 11 }} axisLine={false} />
                       <Tooltip contentStyle={{ background: "hsl(228,14%,10%)", border: "1px solid hsl(228,12%,16%)", borderRadius: 8 }} />
-                      <Bar dataKey="importance" fill="hsl(160,84%,39%)" radius={[0, 4, 4, 0]} />
+                      <Bar dataKey="importance" fill="#F97316" radius={[0, 4, 4, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -139,7 +139,7 @@ export default function Dashboard() {
               <Card className="lg:col-span-2">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Target className="h-5 w-5 text-primary" /> {t("dashboard.modelCalibration")}
+                    <Target className="h-5 w-5 text-orange-500" /> {t("dashboard.modelCalibration")}
                   </CardTitle>
                   <CardDescription>{t("dashboard.predictedVsActual")}</CardDescription>
                 </CardHeader>
@@ -157,7 +157,7 @@ export default function Dashboard() {
                   </CardHeader>
                   <CardContent>
                     <div className="w-full bg-secondary h-2 rounded-full overflow-hidden">
-                      <div className="bg-primary h-full" style={{ width: `${validation.mean_cv * 100}%` }} />
+                      <div className="bg-orange-500 h-full" style={{ width: `${validation.mean_cv * 100}%` }} />
                     </div>
                   </CardContent>
                 </Card>
@@ -178,9 +178,9 @@ export default function Dashboard() {
 
           {/* FAIRNESS TAB */}
           <TabsContent value="fairness" className="space-y-6 outline-none">
-            <div className="flex items-center justify-between p-4 bg-primary/5 rounded-xl border border-primary/20 mb-6">
+            <div className="flex items-center justify-between p-4 bg-orange-500/5 rounded-xl border border-orange-500/20 mb-6">
               <div className="flex items-center gap-3">
-                <Scale className="h-6 w-6 text-primary" />
+                <Scale className="h-6 w-6 text-orange-500" />
                 <div>
                   <h3 className="font-bold">{t("fairness.mitigationEngine")}</h3>
                   <p className="text-xs text-muted-foreground">{t("fairness.desc")}</p>
@@ -208,7 +208,7 @@ export default function Dashboard() {
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm"><span>{t("simulator.urban")}</span><span>{(fairness.urban.approvalRate * 100).toFixed(1)}%</span></div>
                       <div className="w-full bg-secondary h-3 rounded-full overflow-hidden">
-                        <div className="bg-primary/60 h-full transition-all duration-500" style={{ width: `${fairness.urban.approvalRate * 100}%` }} />
+                        <div className="bg-orange-600/60 h-full transition-all duration-500" style={{ width: `${fairness.urban.approvalRate * 100}%` }} />
                       </div>
                     </div>
                     <Separator />
@@ -244,10 +244,10 @@ export default function Dashboard() {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-4 bg-primary/10 border border-primary/20 rounded-xl flex gap-3">
-                    <ShieldAlert className="h-5 w-5 text-primary shrink-0" />
+                  <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl flex gap-3">
+                    <ShieldAlert className="h-5 w-5 text-orange-500 shrink-0" />
                     <div>
-                      <p className="text-sm font-bold text-primary">{t("fairness.validated")}</p>
+                      <p className="text-sm font-bold text-orange-500">{t("fairness.validated")}</p>
                       <p className="text-xs text-muted-foreground leading-snug">
                         {t("fairness.equalizedOdds")} is within bounds.
                       </p>
@@ -265,6 +265,25 @@ export default function Dashboard() {
                         <Badge variant="outline" className="text-[10px] h-5 bg-green-500/5 text-green-500 border-green-500/20">{t("dashboard.excluded")}</Badge>
                       </div>
                     ))}
+                  </CardContent>
+                </Card>
+
+                {/* Behavioral Quiz CTA */}
+                <Card className="glass-card bg-orange-500/10 border-orange-500/20 overflow-hidden relative group mt-6">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition duration-500">
+                    <Brain className="h-20 w-20 text-orange-500" />
+                  </div>
+                  <CardHeader className="pb-2">
+                    <Badge className="w-fit mb-2 bg-orange-500 hover:bg-orange-600">NEW MODULE</Badge>
+                    <CardTitle className="text-xl font-display font-bold">Character Assessment</CardTitle>
+                    <CardDescription>Scientific psychometric modeling for character-based scoring.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pb-6">
+                    <Link to="/behavioral-quiz">
+                      <Button className="w-full bg-orange-500 hover:bg-orange-600 font-bold gap-2">
+                        Take Behavioral Quiz <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </div>
@@ -286,15 +305,15 @@ export default function Dashboard() {
                       <div className="text-xs text-muted-foreground">Approval Rate</div>
                     </div>
                     <div className="space-y-1 border-l border-border">
-                      <div className="text-xs text-primary uppercase font-bold">{t("inclusion.trustscore")}</div>
-                      <div className="text-4xl font-display font-bold text-primary">{(inclusion.alternative_rate * 100).toFixed(0)}%</div>
-                      <div className="text-xs text-primary/80">Approval Rate</div>
+                      <div className="text-xs text-orange-500 uppercase font-bold">{t("inclusion.trustscore")}</div>
+                      <div className="text-4xl font-display font-bold text-orange-500">{(inclusion.alternative_rate * 100).toFixed(0)}%</div>
+                      <div className="text-xs text-orange-500/80">Approval Rate</div>
                     </div>
                   </div>
 
-                  <div className="p-6 bg-primary/5 border border-primary/10 rounded-2xl text-center">
+                  <div className="p-6 bg-orange-500/5 border border-orange-500/10 rounded-2xl text-center">
                     <div className="text-sm font-medium text-muted-foreground mb-1">{t("inclusion.totalLift")}</div>
-                    <div className="text-5xl font-display font-black text-primary">+{(inclusion.lift * 100).toFixed(1)}%</div>
+                    <div className="text-5xl font-display font-black text-orange-500">+{(inclusion.lift * 100).toFixed(1)}%</div>
                     <p className="text-xs text-muted-foreground mt-2 max-w-xs mx-auto">
                       {t("inclusion.additionalPeople")}
                     </p>
@@ -320,7 +339,7 @@ export default function Dashboard() {
 
                 <Card className="bg-primary/5 border-primary/20">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                    <CardTitle className="text-xs font-bold uppercase tracking-widest text-orange-500 flex items-center gap-2">
                       <ArrowUpRight className="h-3 w-3" /> {t("inclusion.growthOpportunity")}
                     </CardTitle>
                   </CardHeader>

@@ -79,7 +79,7 @@ export default function Fairness() {
             </CardHeader>
             <CardContent>
               <div className="h-1 w-full bg-secondary rounded-full overflow-hidden">
-                <div className="h-full bg-primary" style={{ width: `${analysis.equalized_odds_gap * 200}%` }} />
+                <div className="h-full bg-orange-500" style={{ width: `${analysis.equalized_odds_gap * 200}%` }} />
               </div>
             </CardContent>
           </Card>
@@ -91,14 +91,14 @@ export default function Fairness() {
             </CardHeader>
             <CardContent>
               <div className="h-1 w-full bg-secondary rounded-full overflow-hidden">
-                <div className="h-full bg-primary" style={{ width: `${analysis.approval_gap * 200}%` }} />
+                <div className="h-full bg-orange-500" style={{ width: `${analysis.approval_gap * 200}%` }} />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-primary text-primary-foreground shadow-lg shadow-primary/20">
+          <Card className="bg-orange-500 text-white shadow-lg shadow-orange-500/20">
             <CardHeader className="pb-2 text-center">
-              <CardDescription className="text-[10px] uppercase font-bold tracking-widest text-primary-foreground/70">{t("fairness.rating")}</CardDescription>
+              <CardDescription className="text-[10px] uppercase font-bold tracking-widest text-white/70">{t("fairness.rating")}</CardDescription>
               <CardTitle className="text-3xl font-display">{analysis.biasDetected && !mitigate ? 'GRADE C' : 'GRADE A+'}</CardTitle>
             </CardHeader>
             <CardContent className="text-center text-[10px] opacity-80 pt-2 border-t border-white/10">
@@ -111,7 +111,7 @@ export default function Fairness() {
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div className="glass-card p-6">
             <h3 className="font-display font-semibold mb-6 flex items-center gap-2">
-              <Zap className="h-4 w-4 text-primary" /> {t("fairness.approvalRate")}
+              <Zap className="h-4 w-4 text-orange-500" /> {t("fairness.approvalRate")}
             </h3>
             <ResponsiveContainer width="100%" height={240}>
               <BarChart data={chartData}>
@@ -128,7 +128,7 @@ export default function Fairness() {
           </div>
 
           <div className="space-y-6">
-            <div className="glass-card p-6 border-l-4 border-l-primary">
+            <div className="glass-card p-6 border-l-4 border-l-orange-500">
               <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">{t("fairness.mitigationReport")}</h4>
               <div className="space-y-4">
                 <div className="flex justify-between items-center text-sm">
@@ -141,7 +141,7 @@ export default function Fairness() {
                 </div>
                 <div className="flex justify-between items-center text-sm font-bold pt-2 border-t border-border">
                   <span>{t("inclusion.totalLift")}</span>
-                  <span className="text-primary">+12%</span>
+                  <span className="text-orange-500">+12%</span>
                 </div>
               </div>
             </div>

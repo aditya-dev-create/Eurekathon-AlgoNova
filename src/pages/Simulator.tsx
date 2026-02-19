@@ -6,9 +6,9 @@ import {
 } from "recharts";
 import {
   Zap, TrendingUp, AlertTriangle, Shield, Calendar, Info, MapPin,
-  Smartphone, Activity, Volume2, VolumeX, HelpCircle, ArrowRight
+  Smartphone, Activity, Volume2, VolumeX, HelpCircle, ArrowRight, User, Brain
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CreditScoreGauge from "@/components/CreditScoreGauge";
 import { predict, UserInputs, PredictionResult, getScoreEvolution, getScoreColor } from "@/lib/trustscore";
@@ -80,7 +80,7 @@ function SliderField({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-1.5 rounded-full appearance-none cursor-pointer bg-secondary accent-primary transition-all hover:h-2"
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer bg-secondary accent-orange-500 transition-all hover:h-2"
       />
     </div>
   );
@@ -88,16 +88,29 @@ function SliderField({
 
 export default function Simulator() {
   const { t, language, speak, isSpeaking, stopSpeaking } = useLanguage();
+  const location = useLocation();
   const [hasConsent, setHasConsent] = useState(false);
   const [inputs, setInputs] = useState<UserInputs>(initialInputs);
   const [result, setResult] = useState<PredictionResult | null>(null);
   const [evolutionMonths, setEvolutionMonths] = useState(12);
+  const [isProfileCreated] = useState(() => localStorage.getItem("onboarding_complete") === "true");
+  const [isQuizComplete] = useState(() => localStorage.getItem("behavioral_quiz_complete") === "true");
+  const [persistedBehavioralScore] = useState(() => {
+    const score = localStorage.getItem("behavioral_score");
+    return score ? parseInt(score) : null;
+  });
 
   const update = (key: keyof UserInputs, val: any) =>
     setInputs((prev) => ({ ...prev, [key]: val }));
 
   const handlePredict = () => {
-    setResult(predict(inputs));
+    // Priority: Location state (newly completed) > Persisted (previous)
+    const behavioralOverride = location.state?.behavioralScore || persistedBehavioralScore;
+
+    setResult(predict({
+      ...inputs,
+      behavioral_score_override: behavioralOverride
+    }));
   };
 
   const evolutionData = useMemo(() => result
@@ -143,6 +156,17 @@ export default function Simulator() {
             >
               {t("simulator.desc")}
             </motion.p>
+            {location.state?.behavioralScore && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="mt-3"
+              >
+                <Badge className="bg-orange-500 text-white border-none py-1.5 px-4 font-bold animate-pulse shadow-lg shadow-orange-500/20">
+                  <Brain className="h-3.5 w-3.5 mr-2" /> Behavioral Score Active: {location.state.behavioralScore}
+                </Badge>
+              </motion.div>
+            )}
           </div>
           <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20 py-1 px-3">
             <Shield className="h-3.5 w-3.5 mr-1.5" /> {t("common.underbanked")}
@@ -218,12 +242,12 @@ export default function Simulator() {
                 </div>
               </div>
 
-              <button
+              <Button
                 onClick={handlePredict}
-                className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:brightness-110 transition glow-primary flex items-center justify-center gap-2"
+                className="w-full py-6 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg shadow-orange-500/20"
               >
                 <Zap className="h-4 w-4" /> {t("simulator.improveScore").toUpperCase()}
-              </button>
+              </Button>
             </div>
           </motion.div>
 
