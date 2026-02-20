@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Shield, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 import { LanguageSelector } from "./LanguageSelector";
@@ -26,11 +26,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 glow-primary">
-              <Shield className="h-5 w-5 text-primary" />
+            {/* Fin Saarthi custom logo: rupee-compass mark */}
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 shadow-lg shadow-orange-500/30">
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Rupee symbol styled as a compass guide */}
+                <text x="3.5" y="18" fontSize="16" fontWeight="800" fill="white" fontFamily="serif">₹</text>
+                {/* Upward guiding arrow accent */}
+                <path d="M18 8 L21 4 L17 5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.85" />
+                <path d="M21 4 L16 14" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
+              </svg>
             </div>
             <span className="font-display text-lg font-bold tracking-tight text-foreground">
-              Trust<span className="text-primary">Score</span>
+              Fin <span className="text-primary">Saarthi</span>
             </span>
           </Link>
 
