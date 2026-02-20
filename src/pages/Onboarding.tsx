@@ -103,9 +103,9 @@ const Onboarding = () => {
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Identity Verified</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">{t("onboarding.successTitle")}</h1>
             <p className="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
-              Your digital footprint has been synthesized. You are now eligible for basic credit products.
+              {t("onboarding.successDesc")}
             </p>
           </div>
 
@@ -115,18 +115,18 @@ const Onboarding = () => {
                 <Shield className="w-6 h-6" />
               </div>
               <div className="space-y-0.5">
-                <h3 className="font-bold text-slate-900 dark:text-slate-50">Signal Authenticated</h3>
-                <p className="text-xs text-slate-500">Cross-verified via alternative data channels.</p>
+                <h3 className="font-bold text-slate-900 dark:text-slate-50">{t("onboarding.signalAuth")}</h3>
+                <p className="text-xs text-slate-500">{t("onboarding.signalAuthDesc")}</p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3 pt-2">
               <div className="p-3 bg-white/50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
-                <div className="text-[10px] uppercase font-bold text-slate-400 mb-1 tracking-widest">Confidence</div>
+                <div className="text-[10px] uppercase font-bold text-slate-400 mb-1 tracking-widest">{t("onboarding.confidence")}</div>
                 <div className="text-sm font-black text-orange-500">98.2%</div>
               </div>
               <div className="p-3 bg-white/50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
-                <div className="text-[10px] uppercase font-bold text-slate-400 mb-1 tracking-widest">Risk Tier</div>
+                <div className="text-[10px] uppercase font-bold text-slate-400 mb-1 tracking-widest">{t("onboarding.riskTier")}</div>
                 <div className="text-sm font-black text-emerald-500">ALPHA</div>
               </div>
             </div>
@@ -140,7 +140,7 @@ const Onboarding = () => {
             <Button
               className="w-full py-6 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg shadow-orange-500/30 transition-all flex items-center justify-center gap-2 group transform active:scale-[0.98]"
             >
-              Continue to Quiz
+              {t("onboarding.continueQuiz")}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
@@ -164,7 +164,7 @@ const Onboarding = () => {
           </div>
           <div className="flex items-center gap-3">
             <div className="h-4 w-[1px] bg-slate-200 dark:bg-slate-800" />
-            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">SECURE NODE</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t("onboarding.secureNode")}</div>
           </div>
         </div>
       </nav>
@@ -176,7 +176,7 @@ const Onboarding = () => {
             animate={{ opacity: 1, y: 0 }}
             className="px-3 py-1 bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 text-[10px] font-bold rounded-full w-fit uppercase tracking-widest border border-orange-100 dark:border-orange-900/50 shadow-sm mx-auto sm:mx-0"
           >
-            KYC Optimization Module
+            {t("onboarding.kycModule")}
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
@@ -184,7 +184,7 @@ const Onboarding = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl font-black tracking-tighter"
           >
-            Digital Persona.
+            {t("onboarding.pageTitle")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -192,7 +192,7 @@ const Onboarding = () => {
             transition={{ delay: 0.2 }}
             className="text-slate-500 dark:text-slate-400 text-lg max-w-[480px] leading-relaxed mx-auto sm:mx-0"
           >
-            Complete your profile to enable the deep analysis engine. AI-driven identity verification starts here.
+            {t("onboarding.pageDesc")}
           </motion.p>
         </header>
 
@@ -206,7 +206,7 @@ const Onboarding = () => {
           >
             <div className="card-in-card space-y-4">
               <div className="space-y-1.5">
-                <label htmlFor="fullName" className="label-refined">Full Legal Name</label>
+                <label htmlFor="fullName" className="label-refined">{t("onboarding.fullName")}</label>
                 <input
                   id="fullName"
                   autoFocus
@@ -221,7 +221,7 @@ const Onboarding = () => {
 
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-4 space-y-1.5">
-                  <label htmlFor="age" className="label-refined">Age</label>
+                  <label htmlFor="age" className="label-refined">{t("onboarding.age")}</label>
                   <input
                     id="age"
                     required
@@ -232,7 +232,7 @@ const Onboarding = () => {
                   />
                 </div>
                 <div className="col-span-8 space-y-1.5">
-                  <label className="label-refined">Gender Disclosure</label>
+                  <label className="label-refined">{t("onboarding.gender")}</label>
                   <SegmentedControl
                     name="gender"
                     options={["Male", "Female", "Other"]}
@@ -244,7 +244,7 @@ const Onboarding = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="email" className="label-refined">Work Email</label>
+                  <label htmlFor="email" className="label-refined">{t("onboarding.email")}</label>
                   <div className="relative group">
                     <Mail className="absolute left-3 top-1/2 -reset translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-orange-500 transition-colors" />
                     <input
@@ -259,7 +259,7 @@ const Onboarding = () => {
                   </div>
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="phone" className="label-refined">Mobile Connect</label>
+                  <label htmlFor="phone" className="label-refined">{t("onboarding.phone")}</label>
                   <div className="relative group">
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-orange-500 transition-colors" />
                     <input
@@ -287,7 +287,7 @@ const Onboarding = () => {
             <div className="card-in-card space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="label-refined">Marital Profile</label>
+                  <label className="label-refined">{t("onboarding.maritalProfile")}</label>
                   <SegmentedControl
                     name="maritalStatus"
                     options={["Single", "Married"]}
@@ -296,7 +296,7 @@ const Onboarding = () => {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="education" className="label-refined">Academic Tier</label>
+                  <label htmlFor="education" className="label-refined">{t("onboarding.academicTier")}</label>
                   <select
                     id="education"
                     className="input-refined appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.25em] bg-[right_0.75rem_center] bg-no-repeat pr-10 cursor-pointer"
@@ -312,7 +312,7 @@ const Onboarding = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="occupation" className="label-refined">Current Occupation</label>
+                <label htmlFor="occupation" className="label-refined">{t("onboarding.occupation")}</label>
                 <input
                   id="occupation"
                   required
@@ -336,7 +336,7 @@ const Onboarding = () => {
             <div className="card-in-card space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="space-y-1.5">
-                  <label className="label-refined">Residential Geo</label>
+                  <label className="label-refined">{t("onboarding.residentialGeo")}</label>
                   <SegmentedControl
                     name="residence"
                     options={["Urban", "Suburban", "Rural"]}
@@ -346,7 +346,7 @@ const Onboarding = () => {
                 </div>
 
                 <CustomSlider
-                  label="Duration of Stay"
+                  label={t("onboarding.durationOfStay")}
                   suffix="y"
                   min={0}
                   max={10}
@@ -360,9 +360,9 @@ const Onboarding = () => {
 
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { id: "hasBankAccount", label: "Active Banking", icon: CreditCard },
-                  { id: "hasUtilityBills", label: "Utility Flow", icon: TrendingUp },
-                  { id: "upiUsage", label: "UPI Network", icon: Zap }
+                  { id: "hasBankAccount", label: t("onboarding.activeBanking"), icon: CreditCard },
+                  { id: "hasUtilityBills", label: t("onboarding.utilityFlow"), icon: TrendingUp },
+                  { id: "upiUsage", label: t("onboarding.upiNetwork"), icon: Zap }
                 ].map((toggle) => (
                   <button
                     key={toggle.id}
@@ -389,7 +389,7 @@ const Onboarding = () => {
                   <Smartphone className="w-4 h-4" />
                   <div className="flex-1 space-y-1">
                     <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-tighter">
-                      <span>Digital Reach</span>
+                      <span>{t("onboarding.digitalReach")}</span>
                       <span className="text-orange-500 mono">{form.smartphoneUsage}h</span>
                     </div>
                     <input
@@ -460,7 +460,7 @@ const Onboarding = () => {
             <div className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800">
               <Lock className="w-4 h-4 text-orange-500 mt-0.5" />
               <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                Analysis is performed locally where possible. Sensitive signals are encrypted using AES-256 before being processed by the sovereign credit engine.
+                {t("onboarding.secureNode")} – {t("onboarding.signalAuthDesc")}
               </p>
             </div>
 
@@ -479,11 +479,11 @@ const Onboarding = () => {
                 {loading ? (
                   <>
                     <div className="w-6 h-6 border-3 border-white/20 border-t-white rounded-full animate-spin" />
-                    <span className="tracking-tighter">SYNTHESIZING...</span>
+                    <span className="tracking-tighter">{t("onboarding.synthesizing")}</span>
                   </>
                 ) : (
                   <>
-                    <span className="tracking-tighter uppercase">Generate Digital Persona</span>
+                    <span className="tracking-tighter uppercase">{t("onboarding.generateBtn")}</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
