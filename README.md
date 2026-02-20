@@ -1,4 +1,4 @@
-# Antigravity Behavioral Credit Intelligence Platform
+# TrustScore
 
 ## Overview
 Antigravity is a production-grade Behavioral Credit Intelligence Platform designed to score unbanked and underbanked populations. It leverages financial stability, behavioral patterns, and psychometric signals to create a more inclusive and accurate credit risk profile.
