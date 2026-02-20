@@ -173,6 +173,18 @@ export const translations = {
             nbfcsDesc: "Automate thin-file underwriting.",
             bnplDesc: "Real-time behavioral checks.",
             ruralBanksDesc: "Physical data digitizer.",
+        },
+        onboarding: {
+            identity_title: "Basic Identity",
+            identity_desc: "Essential details for your digital persona.",
+            stability_title: "Financial Stability",
+            stability_desc: "Signals reflecting your economic resilience.",
+            footprint_title: "Digital Footprint",
+            footprint_desc: "Your reach across digital payment networks.",
+            sovereign_title: "Sovereign Identity",
+            sovereign_desc: "Government-verified identifiers for deep trust.",
+            aadhaar: "Aadhaar Number (12 Digits)",
+            pan: "Permanent Account Number (PAN)",
         }
     },
     hi: {
@@ -347,6 +359,18 @@ export const translations = {
             nbfcsDesc: "अल्प-डेटा वाले अंडरराइटिंग को स्वचालित करें।",
             bnplDesc: "वास्तविक समय व्यवहार जाँच।",
             ruralBanksDesc: "भौतिक डेटा डिजिटाइज़र।",
+        },
+        onboarding: {
+            identity_title: "बुनियादी पहचान",
+            identity_desc: "आपके डिजिटल व्यक्तित्व के लिए आवश्यक विवरण।",
+            stability_title: "वित्तीय स्थिरता",
+            stability_desc: "आपकी आर्थिक मजबूती को दर्शाने वाले संकेत।",
+            footprint_title: "डिजिटल पदचिह्न",
+            footprint_desc: "डिजिटल भुगतान नेटवर्क पर आपकी पहुंच।",
+            sovereign_title: "संप्रभु पहचान (Government ID)",
+            sovereign_desc: "गहरी सुरक्षा के लिए सरकारी आईडी कार्ड।",
+            aadhaar: "आधार नंबर (12 अंक)",
+            pan: "पैन कार्ड नंबर (PAN)",
         }
     },
     kn: {
@@ -521,6 +545,18 @@ export const translations = {
             nbfcsDesc: "ಕಡಿಮೆ ಡೇಟಾ ಹೊಂದಿರುವ ಅಂಡರ್ರೈಟಿಂಗ್ ಅನ್ನು ಸ್ವಯಂಚಾಲಿತಗೊಳಿಸಿ.",
             bnplDesc: "ನೈಜ ಸಮಯದ ವರ್ತನೆಯ ತಪಾಸಣೆ.",
             ruralBanksDesc: "ಭೌತಿಕ ಡೇಟಾ ಡಿಜಿಟೈಸರ್.",
+        },
+        onboarding: {
+            identity_title: "ಮೂಲ ಗುರುತು",
+            identity_desc: "ನಿಮ್ಮ ಡಿಜಿಟಲ್ ವ್ಯಕ್ತಿತ್ವಕ್ಕಾಗಿ ಅಗತ್ಯ ವಿವರಗಳು.",
+            stability_title: "ಹಣಕಾಸಿನ ಸ್ಥಿರತೆ",
+            stability_desc: "ನಿಮ್ಮ ಆರ್ಥಿಕ ಸ್ಥಿತಿಯನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವ ಸಂಕೇತಗಳು.",
+            footprint_title: "ಡಿಜಿಟಲ್ ಹೆಜ್ಜೆಗುರುತು",
+            footprint_desc: "ಡಿಜಿಟಲ್ ಪಾವತಿ ಜಾಲಗಳಲ್ಲಿ ನಿಮ್ಮ ವ್ಯಾಪ್ತಿ.",
+            sovereign_title: "ಸರ್ಕಾರಿ ಗುರುತು",
+            sovereign_desc: "ಸರ್ಕಾರದಿಂದ ಪ್ರಮಾಣೀಕರಿಸಲ್ಪಟ್ಟ ಗುರುತುಗಳು.",
+            aadhaar: "ಆಧಾರ್ ಸಂಖ್ಯೆ (12 ಅಂಕಿಗಳು)",
+            pan: "ಪಾನ್ ಸಂಖ್ಯೆ (PAN)",
         }
     }
 };

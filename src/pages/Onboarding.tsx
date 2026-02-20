@@ -39,6 +39,11 @@ const onboardingSteps = [
     title: "onboarding.footprint_title",
     desc: "onboarding.footprint_desc",
     icon: Zap
+  },
+  {
+    title: "Sovereign Identity",
+    desc: "Government-verified identifiers for deep trust verification.",
+    icon: Shield
   }
 ]
 
@@ -62,7 +67,9 @@ const Onboarding = () => {
     hasBankAccount: true,
     hasUtilityBills: false,
     smartphoneUsage: 4,
-    upiUsage: true
+    upiUsage: true,
+    aadhaar: "",
+    pan: ""
   })
 
   const updateForm = (key: keyof typeof form, value: any) => {
@@ -394,6 +401,56 @@ const Onboarding = () => {
                       onChange={(e) => updateForm("smartphoneUsage", parseInt(e.target.value))}
                     />
                   </div>
+                </div>
+              </div>
+            </div>
+          </SignalSection>
+
+          {/* Section 4: Sovereign Identity */}
+          <SignalSection
+            index={3}
+            title={t("onboarding.sovereign_title")}
+            description={t("onboarding.sovereign_desc")}
+            icon={<Shield className="w-4 h-4" />}
+          >
+            <div className="card-in-card space-y-4">
+              <div className="space-y-1.5">
+                <label htmlFor="aadhaar" className="label-refined">{t("onboarding.aadhaar")}</label>
+                <div className="relative group">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-orange-500 transition-colors" />
+                  <input
+                    id="aadhaar"
+                    required
+                    type="text"
+                    maxLength={12}
+                    placeholder="0000 0000 0000"
+                    className="input-refined pl-9 mono"
+                    value={form.aadhaar}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, "").slice(0, 12);
+                      updateForm("aadhaar", val);
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="pan" className="label-refined">{t("onboarding.pan")}</label>
+                <div className="relative group">
+                  <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-orange-500 transition-colors" />
+                  <input
+                    id="pan"
+                    required
+                    type="text"
+                    maxLength={10}
+                    placeholder="ABCDE1234F"
+                    className="input-refined pl-9 mono uppercase"
+                    value={form.pan}
+                    onChange={(e) => {
+                      const val = e.target.value.toUpperCase().slice(0, 10);
+                      updateForm("pan", val);
+                    }}
+                  />
                 </div>
               </div>
             </div>
