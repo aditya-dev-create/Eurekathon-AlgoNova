@@ -157,7 +157,7 @@ export default function Profile() {
               <div className="h-8 w-8 rounded-md bg-[color:var(--primary)]/10 flex items-center justify-center">
                 <CreditCard className="h-4 w-4 text-[color:var(--primary)]" />
               </div>
-              <div className="text-sm font-semibold">TrustScore — Profile</div>
+              <div className="text-sm font-semibold">Fin Saarthi — Profile</div>
             </div>
             <div className="text-xs text-muted-foreground">Secure · Private · Explainable</div>
           </div>
@@ -170,13 +170,13 @@ export default function Profile() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <form onSubmit={onSubmit} aria-label="TrustScore onboarding form" className="space-y-6">
+        <form onSubmit={onSubmit} aria-label="Fin Saarthi onboarding form" className="space-y-6">
           <motion.div layout initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 220, damping: 22 }}>
             <div className="text-sm text-muted-foreground">Good {new Date().getHours() < 12 ? "morning" : new Date().getHours() < 18 ? "afternoon" : "evening"},</div>
             <motion.h1 className="text-2xl font-bold truncate" layout>
               <AnimatePresence mode="wait">
                 <motion.span key={state.fullName ? state.fullName.split(" ")[0] : "anon"} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 8 }} transition={{ duration: 0.22 }}>
-                  {state.fullName ? `Hey ${state.fullName.split(" ")[0]}, let's get you a TrustScore` : "Get your TrustScore"}
+                  {state.fullName ? `Hey ${state.fullName.split(" ")[0]}, let's get you a Fin Saarthi Score` : "Get your Fin Saarthi Score"}
                 </motion.span>
               </AnimatePresence>
             </motion.h1>
@@ -494,7 +494,7 @@ export default function Profile() {
 
           {submitted && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 rounded-md bg-[color:var(--success)]/10 text-[color:var(--success)]">
-              Analysis complete — provisional TrustScore generated.
+              Analysis complete — provisional Fin Saarthi Score generated.
             </motion.div>
           )}
         </form>

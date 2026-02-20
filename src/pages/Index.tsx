@@ -140,7 +140,7 @@ export default function Index() {
               <Shield className="h-4 w-4 text-primary" />
             </div>
             <div>
-              <div className="font-display font-bold text-sm">TrustScore OS</div>
+              <div className="font-display font-bold text-sm">Fin Saarthi</div>
               <div className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("common.credits")}</div>
             </div>
           </div>

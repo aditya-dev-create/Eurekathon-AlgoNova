@@ -54,7 +54,7 @@ export default function LoanMarketplace() {
                 maxAmount: 2000000,
                 tenure: "1 - 5 Years",
                 chance: score > 720 ? "High" : score > 650 ? "Medium" : "Low",
-                reason: "Best rates for high TrustScore"
+                reason: "Best rates for high Fin Saarthi Score"
             },
             {
                 id: "hdfc",
@@ -153,7 +153,7 @@ export default function LoanMarketplace() {
                                 </svg>
                                 <div className="absolute inset-0 flex items-center justify-center flex-col">
                                     <span className="text-2xl font-bold font-mono">{score}</span>
-                                    <span className="text-[10px] uppercase font-bold text-muted-foreground">TrustScore</span>
+                                    <span className="text-[10px] uppercase font-bold text-muted-foreground">Fin Saarthi</span>
                                 </div>
                             </div>
                             <Badge variant="outline" className={`${risk === "Low" ? "text-green-500 border-green-500/20" : risk === "Medium" ? "text-yellow-500 border-yellow-500/20" : "text-red-500 border-red-500/20"}`}>
@@ -273,11 +273,11 @@ export default function LoanMarketplace() {
                     <motion.div {...fade(5)} className="mt-12 p-8 rounded-2xl bg-secondary/20 border border-primary/20 text-center">
                         <h3 className="text-lg font-bold mb-2">Want better rates?</h3>
                         <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-                            Improving your TrustScore by just 50 points can unlock interest rates as low as 12%.
+                            Improving your Fin Saarthi Score by just 50 points can unlock interest rates as low as 12%.
                         </p>
                         <Link to="/simulator">
                             <Button variant="outline" className="gap-2">
-                                <Banknote className="h-4 w-4" /> Improve My TrustScore
+                                <Banknote className="h-4 w-4" /> Improve My Fin Saarthi Score
                             </Button>
                         </Link>
                     </motion.div>
